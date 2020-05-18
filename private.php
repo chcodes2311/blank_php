@@ -1,7 +1,7 @@
 <?php
 
     // First we execute our common code to connection to the database and start the session
-    require_once("php/common.php");
+    require("common.php");
 
     // At the top of the page we check to see whether the user is logged in or not
     if(empty($_SESSION['user']))
@@ -19,7 +19,7 @@
     // We can display the user's username to them by reading it from the session array.  Remember that because
     // a username is user submitted content we must use htmlentities on it before displaying it to the user.
 ?>
-<!--Hello --><?php //echo htmlentities($_SESSION['user']['username'], ENT_QUOTES, 'UTF-8'); ?><!--, secret content!<br />-->
+Hello <?php echo htmlentities($_SESSION['user']['username'], ENT_QUOTES, 'UTF-8'); ?>, secret content!<br />
 <a href="memberlist.php">Memberlist</a><br />
 <a href="edit_account.php">Edit Account</a><br />
 <a href="logout.php">Logout</a>

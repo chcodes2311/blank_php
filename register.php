@@ -1,7 +1,7 @@
 <?php
 
     // First we execute our common code to connection to the database and start the session
-    require_once("common.php");
+    require("common.php");
     // This if statement checks to determine whether the registration form has been submitted
     // If it has, then the registration code is run, otherwise the form is displayed
     if(!empty($_POST))
@@ -106,16 +106,12 @@
                 username,
                 password,
                 salt,
-                email,
-                naam,
-                fk_rol
+                email
             ) VALUES (
                 :username,
                 :password,
                 :salt,
-                :email,
-                :naam,
-                :fk_rol
+                :email
             )
         ";
         // A salt is randomly generated here to protect again brute force attacks
@@ -149,9 +145,7 @@
             ':username' => $_POST['username'],
             ':password' => $password,
             ':salt' => $salt,
-            ':email' => $_POST['email'],
-            ':naam' => $_POST['naam'],
-            ':fk_rol' => (int)$_POST['rol']
+            ':email' => $_POST['email']
         );
         try
         {
@@ -166,9 +160,23 @@
             die("Failed to run query: " . $ex->getMessage());
         }
         // This redirects the user back to the login page after they register
-        header("Location: ../index.php?page=login");
+        header("Location: login.php");
         // Calling die or exit after performing a redirect using the header function
         // is critical.  The rest of your PHP script will continue to execute and
         // will be sent to the user if you do not die or exit.
-        die("Redirecting to ../index.php?page=login");
+        die("Redirecting to login.php");
     }
+?>
+<h1>Register</h1>
+<form action="register.php" method="post">
+    Username:<br />
+    <input type="text" name="username" value="" />
+    <br /><br />
+    E-Mail:<br />
+    <input type="text" name="email" value="" />
+    <br /><br />
+    Password:<br />
+    <input type="password" name="password" value="" />
+    <br /><br />
+    <input type="submit" value="Register" />
+</form>

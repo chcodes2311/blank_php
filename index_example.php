@@ -1,7 +1,6 @@
 <?php
 require 'php/common.php';
-$page = 'login';
-
+$page = 'home';
 if (isset($_GET['page'])) {
     $page = $_GET['page'];}
 ?>
@@ -12,11 +11,11 @@ if (isset($_GET['page'])) {
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <meta name="generator" content="Geany 1.23.1" />
     <link rel="stylesheet" type="text/css" href="css/dashboard.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/popupstyle.css">
 </head>
 <body>
 <div style="padding:20px;background-color:#1abc9c;height:1500px;">
-    <div class="main">
+    <div class="balk">
         <br><br>
         <?php
         include 'inc/navbar.inc.php';

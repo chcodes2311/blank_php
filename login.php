@@ -1,6 +1,6 @@
 <?php
     // First we execute our common code to connection to the database and start the session
-    require_once("common.php");
+    require("common.php");
     // This variable will be used to re-display the user's username to them in the
     // login form if they fail to enter the correct password.  It is initialized here
     // to an empty value, which will be shown if the user has not submitted the form.
@@ -13,13 +13,11 @@
         // their username.
         $query = "
             SELECT
-                user_id,
+                id,
                 username,
                 password,
                 salt,
-                email,
-                naam,
-                fk_rol
+                email
             FROM users
             WHERE
                 username = :username
@@ -80,8 +78,8 @@
             // the user's details.
             $_SESSION['user'] = $row;
             // Redirect the user to the private members-only page.
-            header("Location: ../index.php?page=home");
-            die("Redirecting to: ../index.php?page=home");
+            header("Location: private.php");
+            die("Redirecting to: private.php");
         }
         else
         {
@@ -95,3 +93,27 @@
             $submitted_username = htmlentities($_POST['username'], ENT_QUOTES, 'UTF-8');
         }
     }
+?>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/style.css">
+		<title>Book On Shelf Login</title>
+	</head>
+	<body>
+		<div class="main">
+			<h1>Book On Shelf</h1>
+			<form action="login.php" method="post">
+					Username:
+					<input type="text" name="username" value="<?php echo $submitted_username; ?>" />
+					<br /><br />
+					Password:
+					<input type="password" name="password" value="" />
+					<br /><br />
+					<input type="submit" value="Login" />
+			</form>
+			<a href="register.php">Register</a>
+		</div>
+
+	</body>
+</html>

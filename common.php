@@ -4,7 +4,7 @@
     $username = "root";
     $password = "";
     $host = "localhost";
-    $dbname = "hakkers";
+    $dbname = "INSERT_DB_NAME";
 
     // UTF-8 is a character encoding scheme that allows you to conveniently store
     // a wide varienty of special characters, like ¢ or €, in your database.
@@ -30,7 +30,7 @@
     catch(PDOException $ex)
     {
         // If an error occurs while opening a connection to your database, it will
-        // be trapped here.  The script will output an error and stop executing. 
+        // be trapped here.  The script will output an error and stop executing.
         // Note: On a production website, you should not output $ex->getMessage().
         // It may provide an attacker with helpful information about your code
         // (like your database username and password).
